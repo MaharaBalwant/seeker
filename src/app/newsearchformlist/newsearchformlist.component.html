@@ -1,0 +1,39 @@
+<div class="cold-lg-12 col-md-12 col-sm-12" *ngIf="dataSource">
+  <h2>Complete list of all searches</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> S. No. </th>
+        <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+      </ng-container>
+    
+      <!-- location Column -->
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef> Location </th>
+        <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+      </ng-container>
+    
+      <!-- time_to Column -->
+      <ng-container matColumnDef="time_to">
+        <th mat-header-cell *matHeaderCellDef> Time to </th>
+        <td mat-cell *matCellDef="let element"> {{element.time_to}} </td>
+      </ng-container>
+    
+      <!-- time_from Column -->
+      <ng-container matColumnDef="time_from">
+        <th mat-header-cell *matHeaderCellDef> Time from </th>
+        <td mat-cell *matCellDef="let element"> {{element.time_from}} </td>
+      </ng-container>
+
+      <!-- date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <!--<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->
+</div>

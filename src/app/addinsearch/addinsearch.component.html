@@ -1,0 +1,74 @@
+<app-afterlogin-menu></app-afterlogin-menu>
+<fieldset>
+  <div class="container">
+    <!-- Latest Top Three Searches Box Starts-->
+    <div class="row" *ngIf="records">
+      <div class="hero-01" *ngFor="let x of records; let rowIndex = index">
+        <div class="hero-border">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right">
+            <div class="v-area">
+              <div class="v-middle  show-span">
+                <div class="p5" id="label-menu">
+                  <span>{{rowIndex + 1}} - </span>
+                  <span></span>
+                  <span>S</span>
+                  <span>E</span>
+                  <span>A</span>
+                  <span>R</span>
+                  <span>C</span>
+                  <span>H</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-hero">
+          <div class="v-content">
+            <h4 class="font-normal">Location : {{x.location}}</h4>
+            <h4 class="myname">Time : {{x.time_from}} - {{x.time_to}}</h4>
+            <h4 class="font-normal with-line">Date : {{x.date}}</h4>
+            <p>
+              <a class="btn btnc1">
+                <span (click)="onClickEditSearch(x.matchKey);">Edit</span>
+              </a> 
+              <a class="btn btnc1">
+                <span (click)="onClickDeleteBtn(x.matchKey);">Delete</span>
+              </a>
+              <a class="match_class">
+                <span (click)="getMatchingRecords(x.matchKey,x.location,x.date);">3 match</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Latest Top Three Searches Box Ends-->
+
+    <!-- Hiddden Follower Div Start-->
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="w3-container">
+              <h5>Are you sure to delete this search from your list? {{matchDelKey}}</h5>
+            </div>
+          </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="onCloseHandled()" >No</button>
+            <button type="button" class="btn btn-default" (click)="onDeleteCurrentSearch(matchDelKey)" >Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Hiddden Follower Div Ends-->
+    
+    <div class="row">
+      <app-newsearchform (myEvent)="onNewValSubmit($event)" [matchKey]="matchKey"></app-newsearchform>
+      <app-newsearchformlist [master]="master"></app-newsearchformlist>
+    </div>
+  </div>
+</fieldset>
