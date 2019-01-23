@@ -1,0 +1,42 @@
+export const routes: Routes = [
+    {
+      path: '',
+      redirectTo: '/dashboard',
+      pathMatch: 'full'
+    },
+    {
+      path: 'dashboard',
+      component: DashboardComponent
+    },
+    {
+      path: 'questions',
+      component: MyQuestionsComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'question/add',
+      component: QuestionAddUpdateComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'admin',
+      component: AdminComponent,
+      data: { roles: ["admin"] },
+      canActivate: [AuthGuard],
+      canActivateChild: [AuthGuard],
+      children: [
+        {
+          path: 'addinsearch',
+          component: AddinsearchComponent
+        },
+        {
+          path: 'test',
+          component: SeekerHomeCompComponent
+        },
+        {
+          path: 'messages',
+          component: SeekerMessagesComponentComponent
+        }
+  ]
+    }
+  ];

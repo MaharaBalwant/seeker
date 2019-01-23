@@ -48,7 +48,13 @@
     </div>
     <!-- Latest Top Three Searches Box Ends-->
 
-    <!-- Hiddden Follower Div Start-->
+    <!-- Test POPUP Box Starts -->
+    <!--<div id="testboxpopup">
+      <app-renderpopup></app-renderpopup>
+    </div>-->
+    <!-- Test POPUP Box Starts -->
+
+    <!-- Hiddden Follower Div to delete Start-->
     <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -64,7 +70,34 @@
         </div>
       </div>
     </div>
-    <!-- Hiddden Follower Div Ends-->
+    <!-- Hiddden Follower Div to delete Ends-->
+    
+    <!-- Modal To show no of matches List Starts -->
+    <div id="myModal" class="modal" [ngStyle]="{'display':displayMatchModel}">
+        <!--<app-renderpopup></app-renderpopup>-->
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Matching with your search</h5>
+            <button type="button" class="close" data-dismiss="modal" (click)="onCloseHandled()">&times;</button>
+          </div>
+          <div class="w3-container" ng-if="recordsAll?.length > 0" *ngFor="let fl of recordsAll">
+            <div class="clsLeft">
+              <img class="w3-round w3-margin-right" src="https://www.w3schools.com/w3images/avatar3.png" style="width:10%; float:left;">
+            </div>
+            <div class="clsLeft">
+              <span class="w3-opacity w3-large">{{fl.person_name}}</span>
+            </div>
+            <div class="clsLeft">
+              <button class="btn btnClsXs btn-info btn-xs" *ngIf="fl.fBtn==0" (click)="addFollowerList(fl.f_id);">follow</button>
+              <button class="btn btnClsXs btn-info btn-xs" *ngIf="fl.fBtn==1" (click)="messageFollower(fl.f_id);">Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal To show no of matches List Ends -->
     
     <div class="row">
       <app-newsearchform (myEvent)="onNewValSubmit($event)" [matchKey]="matchKey"></app-newsearchform>

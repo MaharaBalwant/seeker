@@ -3,7 +3,7 @@
     <div class="w3-card w3-round w3-white">
       <div class="w3-container w3-padding">
         <h6 class="w3-opacity">Share an update</h6>
-        <textarea contenteditable="true" class="w3-border w3-padding post_textarea" #posttextValue placeholder="Please enter new post here..."></textarea>
+        <textarea contenteditable="true" class="w3-border w3-padding post_textarea" [(ngModel)]="newPostText" #posttextValue placeholder="Please enter new post here..."></textarea>
         <button type="button" class="w3-button w3-theme" (click)="addNewPost(posttextValue.value)">Post</button>
       </div>
     </div>

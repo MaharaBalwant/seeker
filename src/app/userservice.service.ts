@@ -69,10 +69,46 @@ export class UserserviceService {
     return this.http.post(this.loginUri,jsonData,options);
   }
 
+  /* Add/Send new Message Start */
+  addMessages(senderID:number, receiverID:any, newMessageText:string){
+    var jsonData = "senderID="+senderID+"&receiverID="+receiverID+"&newMessageText="+newMessageText+"&function=addMessages";
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.loginUri,jsonData,options);
+  }
+  /* Add/Send new Message Ends */
+
+  /* Get all Message By Selected Persons Start */
+  getMessagesSelectedPerson(senderID:number, receiverID:any){
+    var jsonData = "senderID="+senderID+"&receiverID="+receiverID+"&function=getMessagesSelectedPerson";
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.loginUri,jsonData,options);
+  }
+  /* Get all Message By Selected Persons Ends */
+
   /** Delete by matchKey in addinSearch Component**/
   deleteRecordPersonAddinSearchByPID(personID:number,matchKeyID:number) 
   {
     var jsonData = "personID="+personID+"&matchKEY="+matchKeyID+"&function=deleteRecordPersonAddinSearchByPID";
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.profileUrl,jsonData,options);
+  }
+
+  /* Matching algorithm based on location, date, status for person */
+  getMatchingRecords(personID:number,matchKeyID:number,location:any,date:any)
+  {
+    var jsonData = "personID="+personID+"&matchKEY="+matchKeyID+"&location="+location+"&date="+date+"&function=getMatchingRecords";
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.profileUrl,jsonData,options);
+  }
+
+  /* Add Follower in your list from click on follow button */
+  addFollowerInList(personID:number,followID:number)
+  {
+    var jsonData = "personID="+personID+"&followID="+followID+"&function=addFollowerInList";
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' });
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.profileUrl,jsonData,options);

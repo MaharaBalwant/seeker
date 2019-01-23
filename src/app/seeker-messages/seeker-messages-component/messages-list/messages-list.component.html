@@ -1,0 +1,7 @@
+<div class="w3-sidebar w3-collapse" id="sidenav" style="top: 55px;">
+	<div id="leftmenuinner">
+		<div class="w3-light-grey" id="leftmenuinnerinner">
+			<a *ngFor="let msgUser of listArr" (click)="clickToMsgUser(msgUser.f_id)" [ngClass]="(msgUser.f_id == click) ? 'activeCls' : '' ">{{msgUser.person_name}}</a>
+		</div>
+	</div>
+</div>

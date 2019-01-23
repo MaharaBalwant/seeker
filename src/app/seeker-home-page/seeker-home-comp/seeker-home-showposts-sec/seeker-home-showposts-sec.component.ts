@@ -3,8 +3,7 @@ import { UserserviceService } from '../../.././userservice.service';
 
 @Component({
   selector: 'app-seeker-home-showposts-sec',
-  templateUrl: './seeker-home-showposts-sec.component.html',
-  styleUrls: ['./seeker-home-showposts-sec.component.css']
+  templateUrl: './seeker-home-showposts-sec.component.html'
 })
 export class SeekerHomeShowpostsSecComponent implements OnInit {
   public posts:any = [];

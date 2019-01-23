@@ -1,0 +1,85 @@
+.msg_btn{
+    position: absolute;
+    margin: 23px 0 0 17px;
+}
+#msg-view-div{
+    width: 80%;
+}
+
+#msg-view-div-bottom{
+    width: 80%;
+    position: fixed;
+    bottom: 0;
+}
+
+.msg-view-detail{
+    /*width: 80%;
+    height: -webkit-fill-available;*/
+    position: fixed;
+    padding-bottom: 0;
+    height: 80%;
+    width: 55%;
+    background-color: transparent;
+}
+
+.msg-view-detail_event{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.msg_textarea{
+    width: 62%;
+}
+/* Chat Message Align Start*/
+.container_msg {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px 0;
+  }
+
+  .container_msg p{
+    font-size: 12px;
+  }
+
+  .container_msg span{
+    font-size: 12px;
+  }
+  
+  .darker {
+    border-color: #ccc;
+    background-color: #ddd;
+  }
+  
+  .container_msg::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .container_msg img {
+    float: left;
+    max-width: 35px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+  .container_msg img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+  }
+  
+  .time-right {
+    float: right;
+    color: #aaa;
+  }
+  
+  .time-left {
+    float: left;
+    color: #999;
+  }
+/* Chat Message Align Ends*/

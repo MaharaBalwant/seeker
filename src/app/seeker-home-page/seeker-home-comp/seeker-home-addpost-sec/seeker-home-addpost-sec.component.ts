@@ -9,6 +9,7 @@ import { UserserviceService } from '../../.././userservice.service';
 export class SeekerHomeAddpostSecComponent implements OnInit {
   public posts:any = [];
   public loading:boolean = false;
+  private newPostText:string;
   @Output() myAddNewPostEvent = new EventEmitter<any>();
   constructor(private userService : UserserviceService) { }
 
@@ -20,6 +21,7 @@ export class SeekerHomeAddpostSecComponent implements OnInit {
     this.userService.addNewPost(personID, postValue).subscribe(response =>{
       if(response.json()==1)
       {
+        this.newPostText = '';
         //console.log(response.json());
         this.myAddNewPostEvent.emit(true);
         this.loading = true;

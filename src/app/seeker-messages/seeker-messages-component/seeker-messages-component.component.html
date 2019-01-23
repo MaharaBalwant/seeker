@@ -1,0 +1,11 @@
+<app-afterlogin-menu></app-afterlogin-menu>
+<section>
+  <div class="row">
+    <div class="col-md-3">
+      <messages-list (eventClicked)="childEventClicked($event)"></messages-list>
+    </div>
+    <div class="col-md-9">
+      <messages-view [event]="clickedEvent"></messages-view>
+    </div>
+  </div>
+</section>

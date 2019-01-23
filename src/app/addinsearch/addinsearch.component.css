@@ -1,3 +1,11 @@
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+.modal-dialog {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
+
 .searchheadleft{
     height: 80%;
 }
@@ -142,6 +150,14 @@ ul li
     float: right;
     position: relative;
     padding: 8px;
+}
+
+/* .clsLeft{
+    float : left;
+} */
+
+.btnClsXs{
+    padding: 0 10px 0 10px;
 }
 
 

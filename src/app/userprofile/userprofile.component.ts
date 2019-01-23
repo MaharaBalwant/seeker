@@ -1,3 +1,4 @@
+import { SharedService } from './../shared.service';
 import { User } from './../user.module';
 import { Component, OnInit, Inject } from '@angular/core';
 import {Router} from '@angular/router';
@@ -29,7 +30,9 @@ export class UserprofileComponent implements OnInit {
   public display:string = 'none';
   loading = false;
 
-  constructor(private http:Http, private userService: UserserviceService) {
+  constructor(private http:Http, 
+              private userService: UserserviceService, 
+              private SharedService: SharedService) {
     this.userService = userService;
    }
 
@@ -53,6 +56,20 @@ export class UserprofileComponent implements OnInit {
     });
 
     this.refreshHomePagePost();
+    this.getAllFollowersListOfPerson(personID);
+  }
+
+  getAllFollowersListOfPerson(personID)
+  {
+    this.userService.getAllFollowersByPID(personID).subscribe(response =>{
+      if(response.json())
+      {
+        this.followers = Array.of(JSON.parse(response.text()));
+        this.followers = this.followers[0];
+        this.SharedService.setFollowersList(this.followers);
+        //console.log(this.SharedService.followerList.value);
+      }
+    });
   }
 
   addNewPost(postValue:string){
@@ -79,18 +96,9 @@ export class UserprofileComponent implements OnInit {
   }
 
   /* My Followers Script Start */
-  openFollowersModal(){
-    var personID = JSON.parse(localStorage.getItem('tokkerID_Seeker'));
-    this.userService.getAllFollowersByPID(personID).subscribe(response =>{
-      if(response.json())
-      {
-        this.followers = Array.of(JSON.parse(response.text()));
-        this.followers = this.followers[0];
-        /* if(this.followers == ''){
-          let textemplty = "No follower in your group!"
-        } */
-      }
-    });
+  openFollowersModal()
+  {
+    this.followers = this.SharedService.followerList.value;
     this.display='block';
   }
 

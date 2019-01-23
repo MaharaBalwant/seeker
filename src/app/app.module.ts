@@ -1,7 +1,8 @@
+//import { SeekerMessagesModule } from './seeker-messages/seeker-messages.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule, Injectable, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +22,10 @@ import { SeekerHomeProfileSecComponent } from './seeker-home-page/seeker-home-co
 import { SeekerHomeAddpostSecComponent } from './seeker-home-page/seeker-home-comp/seeker-home-addpost-sec/seeker-home-addpost-sec.component';
 import { SeekerHomeShowpostsSecComponent } from './seeker-home-page/seeker-home-comp/seeker-home-showposts-sec/seeker-home-showposts-sec.component';
 import { SeekerHomeCompComponent } from './seeker-home-page/seeker-home-comp/seeker-home-comp.component';
+import { RenderpopupComponent } from './common/renderpopup/renderpopup.component';
+import { MessagesViewComponent } from './seeker-messages/seeker-messages-component/messages-view/messages-view.component';
+import { SeekerMessagesComponentComponent } from './seeker-messages/seeker-messages-component/seeker-messages-component.component';
+import { MessagesListComponent } from './seeker-messages/seeker-messages-component/messages-list/messages-list.component';
 
 /* Custum code for authgard to block login page aftere logined users starts */
 @Injectable()
@@ -47,8 +52,10 @@ const route = [
   {path:'profile', component:UserprofileComponent},
   {path:'addinsearch', component:AddinsearchComponent /*, canActivate: [OnlyLoggedInUsersGuard] */},
   {path:'test', component:SeekerHomeCompComponent},
+  {path:'messages', component: SeekerMessagesComponentComponent},
+  {path: 'messages/:id', component: SeekerMessagesComponentComponent},
   {path:'', component:HomepageComponent, canActivate: [OnlyLoggedInUsersGuard]},
-  {path: '**', redirectTo: '/not-found'}
+  {path: '**', redirectTo: '/home'}
 ];
 
 @NgModule({
@@ -65,7 +72,11 @@ const route = [
     SeekerHomeCompComponent,
     SeekerHomeProfileSecComponent,
     SeekerHomeAddpostSecComponent,
-    SeekerHomeShowpostsSecComponent
+    SeekerHomeShowpostsSecComponent,
+    RenderpopupComponent,
+    SeekerMessagesComponentComponent,
+    MessagesViewComponent,
+    MessagesListComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +84,8 @@ const route = [
     HttpModule,
     FormsModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    //SeekerMessagesModule
   ],
   providers: [
     UserserviceService,

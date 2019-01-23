@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
@@ -9,8 +9,7 @@ import { UserserviceService } from '../../.././userservice.service';
 
 @Component({
   selector: 'app-seeker-home-profile-sec',
-  templateUrl: './seeker-home-profile-sec.component.html',
-  styleUrls: ['./seeker-home-profile-sec.component.css']
+  templateUrl: './seeker-home-profile-sec.component.html'
 })
 export class SeekerHomeProfileSecComponent implements OnInit {
   public users:any = [];

@@ -1,0 +1,17 @@
+<div class="msg_div">
+  <div id="msg-view-div">
+    <div class="msg-view-detail">
+      <div class="msg-view-detail_event" *ngIf="event">
+          <div *ngFor="let msg of messageArray" [ngClass]="(this.pid == msg.sender_id) ? 'container_msg' : 'container_msg darker' ">
+            <img src="https://www.w3schools.com/w3images/bandmember.jpg" alt="Avatar" [ngClass]="(this.pid == msg.sender_id) ? 'left' : 'right' " style="width:100%;">
+            <p>{{msg.message}}</p>
+            <span class="time-left">{{msg.date_time}}</span>
+          </div>
+      </div>
+    </div>
+  </div><br>
+  <div id="msg-view-div-bottom">
+    <textarea class="msg_textarea" contenteditable="true" [(ngModel)]="newMessageText" placeholder="Write your message..."></textarea>
+    <button class="msg_btn" type="button" (click)="sendAddMessages();">SEND</button>
+  </div>
+</div>
